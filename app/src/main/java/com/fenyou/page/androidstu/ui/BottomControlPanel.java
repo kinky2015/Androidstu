@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.fenyou.page.androidstu.R;
+import com.fenyou.page.androidstu.constant.Constant;
 import com.fenyou.page.androidstu.interfaces.BottomPanelCallback;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
     public ImageText contactsBtn = null;
     public ImageText newBtn = null;
     public ImageText setBtn = null;
-    public List<ImageText> imageList = new ArrayList<ImageText>();
+    public List<ImageText> imageList = new ArrayList<>();
     public BottomControlPanel(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -48,7 +49,20 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
     @Override
     public void onClick(View v) {
         if(null!=messBtn){
-
+            messBtn.setImage(R.drawable.message_unselected);
+            messBtn.setText("消息");
+        }
+        if(null!=contactsBtn){
+            contactsBtn.setImage(R.drawable.contacts_unselected);
+            contactsBtn.setText("联系人");
+        }
+        if(null!=newBtn){
+            newBtn.setImage(R.drawable.news_unselected);
+            newBtn.setText("新闻");
+        }
+        if(null!=setBtn){
+            setBtn.setImage(R.drawable.setting_unselected);
+            setBtn.setText("设置");
         }
 
     }
@@ -59,5 +73,11 @@ public class BottomControlPanel extends RelativeLayout implements View.OnClickLi
 
     public void setBottomPanelCallback(BottomPanelCallback bottomPanelCallback) {
         this.bottomPanelCallback = bottomPanelCallback;
+    }
+
+    public void defaultBtnChecked() {
+        if(messBtn != null){
+            messBtn.setChecked(Constant.BTN_FLAG_MESSAGE);
+        }
     }
 }
